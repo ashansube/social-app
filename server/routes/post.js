@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const requireLogin = require("../middleware/requireLogin");
 const Post = mongoose.model("Post");
 
-router.get("/allpost", (req, res) => {
+router.get("/allpost", requireLogin, (req, res) => {
   Post.find()
     .populate("postedBy", "_id name username")
     .then((posts) => {
@@ -24,7 +24,7 @@ router.post("/createpost", requireLogin, (req, res) => {
   const post = new Post({
     title,
     body,
-    photo:pic,
+    photo: pic,
     postedBy: req.user,
   });
   post
@@ -37,15 +37,15 @@ router.post("/createpost", requireLogin, (req, res) => {
     });
 });
 
-router.get("/mypost", requireLogin,(req, res) => {
+router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
-  .populate("postedBy", "_id name username")
-  .then(mypost=>{
-    res.json({mypost})
-  })
-  .catch(err=>{
-    console.log(err);
-  })
+    .populate("postedBy", "_id name username")
+    .then((mypost) => {
+      res.json({ mypost });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;

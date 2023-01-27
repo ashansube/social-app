@@ -1,0 +1,119 @@
+* {
+  font-family: 'Lexend',Helvetica,Arial,Lucida,sans-serif !important;
+}
+
+input {
+  border: 2px  solid !important;
+  border-color: #526fee !important;
+  padding: 0 10px  !important;
+  border-radius: 10px !important;
+  margin-bottom: 5% !important;
+}
+
+.nav-wrapper { 
+	background: linear-gradient(-45deg, #526fee, #9a3ce7, #e75975, #ed3d72);
+	background-size: 400% 400%;
+	animation: gradient 25s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.brand-logo {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.primary-button {
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .primary-button:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+
+.cardheader {
+  margin-top: 7%;
+  padding: 5% 0 0;
+  font-weight: 600;
+}
+
+.cardheader-signup {
+  margin: 0 0 5% ;
+  padding: 8% 0 3% 0;
+  font-weight: 600;
+}
+.mycard {
+  margin: 2% 0;
+}
+
+.auth-card {
+  text-align: center;
+}
+
+.logincard-inputs {
+  margin-top: 10%;
+  padding: 0 10%;
+}
+
+.logincard-right {
+  color: #ffffff;
+  height: 100%;
+  border-radius: 0px 10px 10px 0px;
+	background: linear-gradient(-45deg, #526fee, #9a3ce7, #e75975, #ed3d72);
+	background-size: 400% 400%;
+	animation: gradient 25s ease infinite;
+
+}
+
+.logincard-right-text{
+  vertical-align: middle;
+  padding: 28% 0;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.signup-card {
+  max-width: 650px;
+  margin: 10px auto;
+}
+
+.signupcard-inputs {
+  padding: 0 20% 8%;
+}

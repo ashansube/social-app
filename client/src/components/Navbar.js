@@ -40,6 +40,7 @@ const NavBar = () => {
   };
 
   return (
+    <div class="navbar-fixed">
     <nav>
       <div className="nav-wrapper white">
         <div className="container">
@@ -52,6 +53,7 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 

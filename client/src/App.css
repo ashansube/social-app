@@ -181,6 +181,13 @@
 .heart-icon {
   font-size: 2rem; 
   color: #ec4949;
+  display: inline;
+}
+
+.heart-icon-red{
+  font-size: 2rem; 
+  color: #ec4949;
+  display: inline;
 }
 
 .file-input-btn {

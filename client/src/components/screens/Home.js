@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import moment from "moment";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     fetch("/allpost", {
       headers: {
@@ -17,6 +20,62 @@ const Home = () => {
       });
   }, []);
 
+  const likePost = (id) => {
+    fetch("/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result);
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const unlikePost = (id) => {
+    fetch("/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="home container">
       <div className="row">
@@ -27,16 +86,31 @@ const Home = () => {
               <div className="card home-card" key={item._id}>
                 <h5 className="home-card-username">{item.postedBy.username}</h5>
                 <div className="card-image">
-                  <img
-                    src={item.photo}
-                    alt="post-img"
-                  />
+                  <img src={item.photo} alt="post-img" />
                 </div>
                 <div className="card-content">
-                  <AiOutlineHeart className="heart-icon" />
+                  {item.likes.includes(state._id)
+                  ? 
+                  <AiFillHeart
+                  className="heart-icon-red"
+                  onClick={() => {
+                  unlikePost(item._id);
+                  }}/>
+                  :
+                  <AiOutlineHeart
+                  className="heart-icon"
+                  onClick={() => {
+                    likePost(item._id);
+                  }}
+                  />
+                  }
+
+                  <h6>{item.likes.length} Likes</h6>
                   <div className="row">
                     <h6 className="col m9">{item.title}</h6>
-                    <h6 className="col m3 card-post-date">{moment(item.created).format("MMMM D, YYYY")}</h6>
+                    <h6 className="col m3 card-post-date">
+                      {moment(item.created).format("MMMM D, YYYY")}
+                    </h6>
                   </div>
                   <p>{item.body}</p>
                   <input type="text" placeholder="add a comment" />
@@ -55,8 +129,8 @@ const Home = () => {
               />
             </div>
             <div>
-              <p>Ashan Subawickrama</p>
-              <p>ashan_sube</p>
+              <p>{state ? state.name : "loading"}</p>
+              <Link to="/profile">{state ? state.username : "loading"}</Link>
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ router.post("/signup", (req, res) => {
         user
           .save()
           .then((user) => {
-            res.json({ message: "User saved successfully" });
+            res.json({ message: "User registered successfully" });
           })
           .catch((err) => {
             console.log(err);
@@ -56,7 +56,8 @@ router.post("/signin", (req, res) => {
         if (doMatch) {
           //res.json({ message: "Successfully Signed In" });
           const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-          res.json({ token });
+          const { _id, name, username, email } = savedUser;
+          res.json({ token, user: { _id, name, username, email } });
         } else {
           return res.status(422).json({ error: "Invalid Email or Password" });
         }

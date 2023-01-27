@@ -202,3 +202,11 @@
 .fileupload-section {
   margin-bottom: 3rem;
 }
+
+.waring-toast {
+  background-color: #ff3841;
+}
+
+.success-toast {
+  background-image: linear-gradient(to right,#9b3ce5d1,#6473f7e3);
+}

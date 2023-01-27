@@ -2,7 +2,7 @@
   font-family: 'Lexend',Helvetica,Arial,Lucida,sans-serif !important;
 }
 
-input {
+.signin-up-input, .createpost-input {
   border: 2px  solid !important;
   border-color: #526fee !important;
   padding: 0 10px  !important;
@@ -64,7 +64,7 @@ input {
   font-weight: 600;
 }
 
-.cardheader-signup {
+.cardheader-signup, .cardheader-createpost {
   margin: 0 0 5% ;
   padding: 8% 0 3% 0;
   font-weight: 600;
@@ -109,11 +109,96 @@ input {
 	}
 }
 
-.signup-card {
+.signup-card, .createpost-card {
   max-width: 650px;
   margin: 10px auto;
 }
 
-.signupcard-inputs {
+.signupcard-inputs, .createpostcard-inputs {
   padding: 0 20% 8%;
+}
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-around;
+  margin: 18px 0px;
+  border-bottom: 1px solid grey;
+}
+
+.profile-user-details {
+  margin: 5%;
+}
+
+.profile-counts {
+  display: flex;
+  justify-content: space-around;
+  width: 108%;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gallery-image {
+  width: 30%;
+}
+
+.home-card {
+  margin: 26px auto;
+}
+
+.home-card-username {
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 2%;
+}
+
+.card-post-date {
+  text-align: right;
+}
+
+.home-profile-card {
+  margin: 26px auto;
+  text-align: center;
+  padding: 15% 15% 10% 15%;
+}
+
+.home-profile-image {
+  width: 100%;
+  border-radius: 100%;
+}
+
+.heart-icon {
+  font-size: 2rem; 
+  color: #ec4949;
+}
+
+.file-input-btn {
+  background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.file-input-btn:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.fileupload-section {
+  margin-bottom: 3rem;
 }

@@ -10,8 +10,8 @@ const SignIn = () => {
         <div className="col s6">
         <h4 className="cardheader">Sign In</h4>
         <div className="logincard-inputs">
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input className="signin-up-input" type="email" placeholder="Email" />
+        <input className="signin-up-input" type="password" placeholder="Password" />
         <button className="btn primary-button">
           SignIn
         </button>

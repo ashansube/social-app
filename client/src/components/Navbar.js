@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const NavBar = () => {
   return (
     <nav>
@@ -12,6 +13,9 @@ const NavBar = () => {
           <ul id="nav-mobile" className="right">
             <li>
               <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/create">Create Post</Link>
             </li>
             <li>
               <Link to="/signin">Sign In</Link>

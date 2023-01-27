@@ -228,3 +228,10 @@
 .logout-btn:hover {
   background-color: #e94951;
 }
+.comment-owner{
+  font-weight: 500;
+}
+
+.post-desc {
+  margin-bottom: 10px !important;
+}

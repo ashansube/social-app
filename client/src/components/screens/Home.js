@@ -76,6 +76,33 @@ const Home = () => {
       });
   };
 
+  const makeComment = (text, postId) => {
+    fetch("/comment", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId,
+        text,
+      }),            
+    }).then(res=>res.json())
+    .then(result=>{
+      console.log(result)
+      const newData = data.map((item) => {
+        if (item._id === result._id) {
+          return result;
+        } else {
+          return item;
+        }
+      })
+      setData(newData)
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
+
   return (
     <div className="home container">
       <div className="row">
@@ -112,8 +139,20 @@ const Home = () => {
                       {moment(item.created).format("MMMM D, YYYY")}
                     </h6>
                   </div>
-                  <p>{item.body}</p>
-                  <input type="text" placeholder="add a comment" />
+                  <p className="post-desc">{item.body}</p>
+                  {
+                    item.comments.map(record=>{
+                      return (
+                        <p key={record._id}><span className="comment-owner">{record.postedBy.name}</span> {record.text}</p>
+                      )
+                    })
+                  }
+                  <form onSubmit={(e)=> {
+                    e.preventDefault()
+                    makeComment(e.target[0].value, item._id)
+                  }}>
+                    <input type="text" placeholder="add a comment" />
+                  </form>
                 </div>
               </div>
             );

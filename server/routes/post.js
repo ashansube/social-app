@@ -8,6 +8,7 @@ router.get("/allpost", requireLogin, (req, res) => {
   Post.find()
     .populate("postedBy", "_id name username")
     .populate("comments.postedBy", "_id name")
+    .sort("-created")
     .then((posts) => {
       res.json({ posts });
     })
@@ -40,6 +41,7 @@ router.post("/createpost", requireLogin, (req, res) => {
 
 router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
+    .sort("-created")
     .populate("postedBy", "_id name username")
     .then((mypost) => {
       res.json({ mypost });
@@ -93,12 +95,13 @@ router.put("/comment", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $push: { comments: comment }, 
+      $push: { comments: comment },
     },
     {
       new: true,
     }
-  ).populate("postedBy", "_id name")
+  )
+    .populate("postedBy", "_id name")
     .populate("comments.postedBy", "_id name")
     .exec((err, result) => {
       if (err) {

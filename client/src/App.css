@@ -126,30 +126,32 @@
 }
 
 .profile-top {
-  display: flex;
-  justify-content: space-around;
-  margin: 18px 0px;
-  border-bottom: 1px solid grey;
+  text-align: center;
+  width: 40%;
+  margin: 2% auto;
+  padding: 18px;
 }
 
 .profile-user-details {
   margin: 5%;
 }
 
-.profile-counts {
-  display: flex;
-  justify-content: space-around;
-  width: 108%;
-}
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
 }
 
 .gallery-image {
   width: 30%;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+
+.gallery-image:hover {
+  transform: scale(1.1);
 }
 
 .home-card {
@@ -174,7 +176,8 @@
 }
 
 .home-profile-image {
-  width: 100%;
+  width: 130px;
+  height: 130px;
   border-radius: 100%;
 }
 
@@ -245,3 +248,14 @@
   transform: translate(-50%, -50%);
 }
 
+.profile-user-data {
+  font-size: 1rem;
+}
+
+.profile-container {
+  margin-bottom: 10%;
+}
+
+.profile-pic-update-btn{
+  float: none;
+}

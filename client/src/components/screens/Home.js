@@ -111,7 +111,7 @@ const Home = () => {
           {data.map((item) => {
             return (
               <div className="card home-card" key={item._id}>
-                <h5 className="home-card-username">{item.postedBy.username}</h5>
+                <h5 className="home-card-username"><Link to={item.postedBy._id !== state._id?"/profile/" + item.postedBy._id : "/profile/"}>{item.postedBy.username}</Link></h5>
                 <div className="card-image">
                   <img src={item.photo} alt="post-img" />
                 </div>

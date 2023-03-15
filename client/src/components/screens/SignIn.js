@@ -81,7 +81,7 @@ const SignIn = () => {
             </div>
             <div className="col s6 logincard-right">
               <div className="logincard-right-text">
-                <h4>Surge SE Internship</h4>
+                <h4>Flash Social</h4>
                 <h5>March 2023</h5>
                 <p>Ashan Subawickrama</p>
               </div>
